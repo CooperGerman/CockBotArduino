@@ -13,7 +13,6 @@ class scale_C
         void calibrate();
         void tare();
         void changeSavedCalFactor();
-        boolean isTare;
 
     private:
         HX711_ADC LoadCell;

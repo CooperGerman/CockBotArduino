@@ -28,26 +28,18 @@ void scale_C::begin()
 unsigned scale_C::update()
 {
 
-    unsigned long t = 0;
-    static boolean newDataReady = 0;
-    const int serialPrintInterval = 0; // increase value to slow down serial print activity
+    boolean newDataReady = false;
+    float i ;
 
-    // check for new data/start next conversion:
-    if (LoadCell.update())
-        newDataReady = true;
-
-    // get smoothed value from the dataset:
-    if (newDataReady)
+    while (newDataReady==false)
     {
-        if (millis() > t + serialPrintInterval)
-        {
-            float i = LoadCell.getData();
-            newDataReady = 0;
-            t = millis();
-            return i;
-        }
+        // check for new data/start next conversion:
+        if (LoadCell.update())
+            newDataReady = true;
+
+        i = LoadCell.getData();
     }
-    return 0;
+    return i;
 }
 
 void scale_C::tare()
