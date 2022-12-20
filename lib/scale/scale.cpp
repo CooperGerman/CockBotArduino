@@ -115,12 +115,10 @@ void scale_C::calibrate()
             {
 #if defined(ESP8266) || defined(ESP32)
                 EEPROM.begin(512);
-#endif
                 EEPROM.put(calVal_eepromAdress, newCalibrationValue);
-#if defined(ESP8266) || defined(ESP32)
                 EEPROM.commit();
-#endif
                 EEPROM.get(calVal_eepromAdress, newCalibrationValue);
+#endif
                 Serial.print("Value ");
                 Serial.print(newCalibrationValue);
                 Serial.print(" saved to EEPROM address: ");
@@ -178,12 +176,10 @@ void scale_C::changeSavedCalFactor()
             {
 #if defined(ESP8266) || defined(ESP32)
                 EEPROM.begin(512);
-#endif
                 EEPROM.put(calVal_eepromAdress, newCalibrationValue);
-#if defined(ESP8266) || defined(ESP32)
                 EEPROM.commit();
-#endif
                 EEPROM.get(calVal_eepromAdress, newCalibrationValue);
+#endif
                 Serial.print("Value ");
                 Serial.print(newCalibrationValue);
                 Serial.print(" saved to EEPROM address: ");
